@@ -1,0 +1,16 @@
+def water():
+    j1,j2=0,0
+    print(f"Step 1: j1={j1}L, j2={j2}L")
+    for i in range(2,4):
+        j2=3
+        print(f"Step {i}: j1={j1}L, j2={j2}L")
+        transfer=min(j2,4-j1)
+        j1+=transfer
+        j2-=transfer
+        print(f"Step {i+1}: j1={j1}L, j2={j2}L")
+    j1=0
+    print(f"Step 6: j1={j1}L, j2={j2}L")
+    j1+=j2
+    j2=0
+    print(f"Step 7: j1={j1}L, j2={j2}L")
+water()
