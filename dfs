@@ -1,0 +1,22 @@
+def dfs(g,s):
+    vist=set()
+    stack=[s]
+    vist.add(s)
+    while stack:
+        node=stack.pop()
+        if node not in vist:
+            vist.add(i)
+        print(node,end=" ")
+        for i in g[node]:
+            if i not in vist:
+                
+                stack.append(i)
+g = {
+    'A': ['B', 'C'],
+    'B': ['D', 'E'],
+    'C': ['F'],
+    'D': [],
+    'E': ['F'],
+    'F': []
+}
+dfs(g,'A')
