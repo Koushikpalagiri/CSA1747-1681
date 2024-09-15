@@ -1,0 +1,44 @@
+import itertools
+
+# Helper function to convert a word to a number based on the current letter-to-digit mapping
+def word_to_number(word, mapping):
+    return int(''.join(str(mapping[letter]) for letter in word))
+
+# Function to solve the cryptarithmetic puzzle
+def cryptarithmetic_solver():
+    # Define the words
+    words = ['SEND', 'MORE', 'MONEY']
+    
+    # Get the unique letters in the puzzle
+    letters = set(''.join(words))
+    
+    # Ensure we have 10 unique letters or fewer (for a valid digit mapping)
+    if len(letters) > 10:
+        print("Too many letters for digit mapping!")
+        return
+    
+    # Iterate over all permutations of 10 digits (0-9) for the letters
+    for perm in itertools.permutations(range(10), len(letters)):
+        # Create a mapping from letters to digits
+        mapping = dict(zip(letters, perm))
+        
+        # Ensure no word starts with a 0 (invalid in cryptarithmetic)
+        if mapping['S'] == 0 or mapping['M'] == 0:
+            continue
+        
+        # Convert the words to numbers using the current mapping
+        send = word_to_number('SEND', mapping)
+        more = word_to_number('MORE', mapping)
+        money = word_to_number('MONEY', mapping)
+        
+        # Check if the equation holds true
+        if send + more == money:
+            print(f"Solution found: {mapping}")
+            print(f"SEND: {send}, MORE: {more}, MONEY: {money}")
+            return
+    
+    # If no solution is found
+    print("No solution found.")
+
+# Run the solver
+cryptarithmetic_solver()
