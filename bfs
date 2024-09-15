@@ -1,0 +1,21 @@
+from collections import deque
+def bfs(g,s):
+    vist=set()
+    queue=deque([s])
+    vist.add(s)
+    while queue:
+        node=queue.popleft()
+        print(node,end=" ")
+        for i in g[node]:
+            if i not in vist:
+                vist.add(i)
+                queue.append(i)
+g = {
+    'A': ['B', 'C'],
+    'B': ['D', 'E'],
+    'C': ['F'],
+    'D': [],
+    'E': ['F'],
+    'F': []
+}
+bfs(g,'A')
